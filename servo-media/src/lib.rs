@@ -6,6 +6,7 @@ use std::sync::{Arc, Mutex};
 
 use audio::AudioBackend;
 use audio::context::{AudioContext, AudioContextOptions};
+// use player::player::Player;
 
 pub struct ServoMedia;
 
@@ -38,4 +39,8 @@ impl ServoMedia {
     pub fn create_audio_context(&self, options: AudioContextOptions) -> AudioContext<Backend> {
         AudioContext::new(options)
     }
+
+    /*pub fn create_player(&self) -> Player {
+        Player::new()
+    }*/
 }
