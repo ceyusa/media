@@ -1,25 +1,19 @@
-extern crate glib;
-use self::glib::*;
-
-use super::gst;
-use super::gst_app;
-use super::gst_player;
-use super::gst_player::PlayerStreamInfoExt;
-
-use player::metadata::Metadata;
-use player::frame::{Frame, FrameRenderer};
-use player::player_impl::{PlayerImpl, PlayerEvent, PlaybackState};
-
-use std::u64;
-use std::time;
-use std::string;
-use std::sync::{Arc, Mutex};
-use std::sync::mpsc;
-
+use glib::*;
+use gst;
+use gst_app;
+use gst_player;
+use gst_player::PlayerStreamInfoExt;
 use ipc_channel::ipc;
+use servo_media_player::frame::{Frame, FrameRenderer};
+use servo_media_player::metadata::Metadata;
+use servo_media_player::{Player, PlaybackState, PlayerEvent};
+use std::string;
+use std::sync::mpsc;
+use std::sync::{Arc, Mutex};
+use std::time;
+use std::u64;
 
-struct GStreamerFrame {
-}
+struct GStreamerFrame {}
 
 impl GStreamerFrame {
     fn new(sample: &gst::Sample) -> Frame {
@@ -36,8 +30,7 @@ impl GStreamerFrame {
     }
 }
 
-struct GStreamerMetadata {
-}
+struct GStreamerMetadata {}
 
 impl GStreamerMetadata {
     fn new(media_info: &gst_player::PlayerMediaInfo) -> Metadata {
@@ -167,9 +160,11 @@ impl GStreamerPlayer {
         let video_sink = gst::ElementFactory::make("appsink", None).unwrap();
         let pipeline = player.get_pipeline();
         pipeline
-            .set_property("video-sink", &video_sink.to_value()).unwrap();
+            .set_property("video-sink", &video_sink.to_value())
+            .unwrap();
         let video_sink = video_sink.dynamic_cast::<gst_app::AppSink>().unwrap();
-        video_sink.set_caps(&gst::Caps::new_simple("video/x-raw",
+        video_sink.set_caps(&gst::Caps::new_simple(
+            "video/x-raw",
             &[
                 ("format", &"BGRA"),
                 ("pixel-aspect-ratio", &gst::Fraction::from((1, 1))),
@@ -190,19 +185,16 @@ impl GStreamerPlayer {
     }
 }
 
-impl PlayerImpl for GStreamerPlayer {
+impl Player for GStreamerPlayer {
     fn register_event_handler(&self, sender: ipc::IpcSender<PlayerEvent>) {
-        self.inner
-            .lock()
-            .unwrap()
-            .register_event_handler(sender);
+        self.inner.lock().unwrap().register_event_handler(sender);
     }
 
-    fn register_frame_renderer<R: FrameRenderer>(&self, renderer: R) {
+    fn register_frame_renderer(&self, renderer: Box<FrameRenderer>) {
         self.inner
             .lock()
             .unwrap()
-            .register_frame_renderer(Box::new(renderer));
+            .register_frame_renderer(renderer);
     }
 
     fn set_input_size(&self, size: u64) {
@@ -287,32 +279,26 @@ impl PlayerImpl for GStreamerPlayer {
                 // for developing purposes
                 println!(
                     "Duration changed to: {:02}:{:02}:{:02}",
-                    hours,
-                    minutes,
-                    seconds
+                    hours, minutes, seconds
                 );
             });
 
         let inner_clone = self.inner.clone();
-        self.inner
-            .lock()
-            .unwrap()
-            .appsink
-            .set_callbacks(
-                gst_app::AppSinkCallbacks::new()
-                    .new_preroll(|_| gst::FlowReturn::Ok)
-                    .new_sample(move |appsink| {
-                        let sample = match appsink.pull_sample() {
-                            None => return gst::FlowReturn::Eos,
-                            Some(sample) => sample,
-                        };
+        self.inner.lock().unwrap().appsink.set_callbacks(
+            gst_app::AppSinkCallbacks::new()
+                .new_preroll(|_| gst::FlowReturn::Ok)
+                .new_sample(move |appsink| {
+                    let sample = match appsink.pull_sample() {
+                        None => return gst::FlowReturn::Eos,
+                        Some(sample) => sample,
+                    };
 
-                        inner_clone.lock().unwrap().render(&sample);
+                    inner_clone.lock().unwrap().render(&sample);
 
-                        gst::FlowReturn::Ok
-                    })
-                    .build(),
-            );
+                    gst::FlowReturn::Ok
+                })
+                .build(),
+        );
 
         let inner_clone = self.inner.clone();
         let (receiver, error_id) = {
@@ -381,10 +367,7 @@ impl PlayerImpl for GStreamerPlayer {
             Err(_) => false,
         };
 
-        glib::signal::signal_handler_disconnect(&self.inner
-                                                .lock()
-                                                .unwrap()
-                                                .player, error_id);
+        glib::signal::signal_handler_disconnect(&self.inner.lock().unwrap().player, error_id);
 
         res
     }
@@ -399,8 +382,7 @@ impl PlayerImpl for GStreamerPlayer {
 
     fn push_data(&self, data: Vec<u8>) -> bool {
         if let Some(ref mut appsrc) = self.inner.lock().unwrap().appsrc {
-            let buffer = gst::Buffer::from_slice(data)
-                .expect("Unable to create a buffer");
+            let buffer = gst::Buffer::from_slice(data).expect("Unable to create a buffer");
             return appsrc.push_buffer(buffer) == gst::FlowReturn::Ok;
         }
         return false;
