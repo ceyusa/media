@@ -556,7 +556,8 @@ fn on_offer_or_answer_created(
         .get_value(ty.as_str())
         .unwrap()
         .get::<gst_webrtc::WebRTCSessionDescription>()
-        .expect("Invalid argument");
+        .expect("Invalid argument")
+        .unwrap();
 
     let type_ = match reply.get_type() {
         gst_webrtc::WebRTCSDPType::Answer => SdpType::Answer,
@@ -581,6 +582,7 @@ fn on_incoming_stream(pipe: &gst::Pipeline, thread: Arc<Mutex<WebRtcThread>>, pa
         .get_structure(0)
         .unwrap()
         .get::<String>("media")
+        .unwrap()
         .unwrap();
     let decodebin2 = decodebin.clone();
     decodebin
@@ -602,7 +604,7 @@ fn on_incoming_decodebin_stream(
     thread: Arc<Mutex<WebRtcThread>>,
     name: &str,
 ) {
-    let pad = values[1].get::<gst::Pad>().expect("not a pad??");
+    let pad = values[1].get::<gst::Pad>().expect("not a pad??").unwrap();
     let proxy_src = gst::ElementFactory::make("proxysrc", None).unwrap();
     let proxy_sink = gst::ElementFactory::make("proxysink", None).unwrap();
     proxy_src.set_property("proxysink", &proxy_sink).unwrap();
@@ -634,7 +636,7 @@ fn process_new_stream(
     pipe: &gst::Pipeline,
     thread: Arc<Mutex<WebRtcThread>>,
 ) {
-    let pad = values[1].get::<gst::Pad>().expect("not a pad??");
+    let pad = values[1].get::<gst::Pad>().expect("not a pad??").unwrap();
     if pad.get_direction() != gst::PadDirection::Src {
         // Ignore outgoing pad notifications.
         return;
@@ -644,8 +646,11 @@ fn process_new_stream(
 
 fn candidate(values: &[glib::Value]) -> IceCandidate {
     let _webrtc = values[0].get::<gst::Element>().expect("Invalid argument");
-    let sdp_mline_index = values[1].get::<u32>().expect("Invalid argument");
-    let candidate = values[2].get::<String>().expect("Invalid argument");
+    let sdp_mline_index = values[1].get::<u32>().expect("Invalid argument").unwrap();
+    let candidate = values[2]
+        .get::<String>()
+        .expect("Invalid argument")
+        .unwrap();
 
     IceCandidate {
         sdp_mline_index,

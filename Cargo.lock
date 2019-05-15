@@ -58,11 +58,8 @@ dependencies = [
 
 [[package]]
 name = "array-init"
-version = "0.0.3"
+version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "nodrop 0.1.12 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "arrayvec"
@@ -693,11 +690,11 @@ dependencies = [
 [[package]]
 name = "glib"
 version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/gtk-rs/glib#67869890a4f52539250faebf0fa542b8953469b9"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -705,7 +702,7 @@ dependencies = [
 [[package]]
 name = "glib-sys"
 version = "0.9.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/gtk-rs/sys#71a7e1b1a8cb713b5ce87f4222cd33e5c509dfd5"
 dependencies = [
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -780,24 +777,24 @@ dependencies = [
 [[package]]
 name = "gobject-sys"
 version = "0.9.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/gtk-rs/sys#71a7e1b1a8cb713b5ce87f4222cd33e5c509dfd5"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer"
-version = "0.14.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "cfg-if 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "muldiv 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -807,242 +804,244 @@ dependencies = [
 
 [[package]]
 name = "gstreamer-app"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-app-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-app-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-base 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-app-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-audio"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
- "array-init 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "array-init 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-audio-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-audio-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-base 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-audio-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-base"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-base-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-gl"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "byteorder 1.2.4 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-gl-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-base 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-gl-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-video-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-gl-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-video-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-player"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-player-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-player-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-player-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-video-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-sdp"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sdp-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-sdp-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
 ]
 
 [[package]]
 name = "gstreamer-sdp-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-video"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-base 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-video-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-video-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-webrtc"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.15.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#19b3427909252c93d4cdf23f1207f14cd8edac7e"
 dependencies = [
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sdp 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-webrtc-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-sdp 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-webrtc-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "gstreamer-webrtc-sys"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+version = "0.9.0"
+source = "git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys#da9db6b80d5ba63655c1c87816cc19afb5a7f305"
 dependencies = [
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sdp-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer-sdp-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.12 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -2026,17 +2025,18 @@ version = "0.1.0"
 dependencies = [
  "boxfnonce 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "byte-slice-cast 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-app 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-audio 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-base 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-player 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sdp 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-webrtc 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-app 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-audio 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-base 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-player 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-sdp 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)",
+ "gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-webrtc 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
  "ipc-channel 0.12.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2059,8 +2059,8 @@ dependencies = [
 name = "servo-media-gstreamer-render"
 version = "0.1.0"
 dependencies = [
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
  "servo-media-player 0.1.0",
 ]
 
@@ -2068,10 +2068,10 @@ dependencies = [
 name = "servo-media-gstreamer-render-android"
 version = "0.1.0"
 dependencies = [
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-gl 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-gl 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
  "servo-media-gstreamer-render 0.1.0",
  "servo-media-player 0.1.0",
 ]
@@ -2080,10 +2080,10 @@ dependencies = [
 name = "servo-media-gstreamer-render-unix"
 version = "0.1.0"
 dependencies = [
- "glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-gl 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glib 0.8.0 (git+https://github.com/gtk-rs/glib)",
+ "gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-gl 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
+ "gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)",
  "servo-media-gstreamer-render 0.1.0",
  "servo-media-player 0.1.0",
 ]
@@ -2826,7 +2826,7 @@ dependencies = [
 "checksum android_glue 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "000444226fcff248f2bc4c7625be32c63caccfecc2723a2b9f78a7487a49c407"
 "checksum app_units 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "9dadc668390b373e73e4abbfc1f07238b09a25858f2f39c06cebc6d8e141d774"
 "checksum approx 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f71f10b5c4946a64aad7b8cf65e3406cd3da22fc448595991d22423cf6db67b4"
-"checksum array-init 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)" = "c3cc8456d0ae81a8c76f59e384683a601548c38949a4bfcb65dd31ded5c75ff3"
+"checksum array-init 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a231f0352d7fbedabf5f2d1b20531b3430d0cd04fe0998973998c30a1a207634"
 "checksum arrayvec 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)" = "a1e964f9e24d588183fcb43503abda40d288c8657dfc27311516ce2f05675aef"
 "checksum ascii 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)" = "3ae7d751998c189c1d4468cf0a39bb2eae052a9c58d50ebb3b9591ee3813ad50"
 "checksum autocfg 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "a6d640bee2da49f60a4068a7fae53acde8982514ab7bae8b8cea9e88cbcfd799"
@@ -2903,33 +2903,33 @@ dependencies = [
 "checksum gl_generator 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a0ffaf173cf76c73a73e080366bf556b4776ece104b06961766ff11449f38604"
 "checksum gl_generator 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "39a23d5e872a275135d66895d954269cf5e8661d234eb1c2480f4ce0d586acbd"
 "checksum gleam 0.6.8 (registry+https://github.com/rust-lang/crates.io-index)" = "4b47f5b15742aee359c7895ab98cf2cceecc89bb4feb6f4e42f802d7899877da"
-"checksum glib 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d70d737019da0473a7cd6d9240571cf58c6897dcb10edf32b90774f4ba237c1b"
-"checksum glib-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4b86a9169fbc9cf9a0ef315039c2304b09d5c575c5fde7defba3576a0311b863"
+"checksum glib 0.8.0 (git+https://github.com/gtk-rs/glib)" = "<none>"
+"checksum glib-sys 0.9.0 (git+https://github.com/gtk-rs/sys)" = "<none>"
 "checksum glutin 0.21.0 (registry+https://github.com/rust-lang/crates.io-index)" = "cb26027a84c3b9e1949ef0df0b6a3db8d0c124243a5c161ea25c7def90cb1474"
 "checksum glutin_egl_sys 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "23f48987ab6cb2b61ad903b59e54a2fd0c380a7baff68cffd6826b69a73dd326"
 "checksum glutin_emscripten_sys 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "245b3fdb08df6ffed7585365851f8404af9c7e2dd4b59f15262e968b6a95a0c7"
 "checksum glutin_gles2_sys 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "89996c30857ae1b4de4b5189abf1ea822a20a9fe9e1c93e5e7b862ff0bdd5cdf"
 "checksum glutin_glx_sys 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "1290a5ca5e46fcfa7f66f949cc9d9194b2cb6f2ed61892c8c2b82343631dba57"
 "checksum glutin_wgl_sys 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "f801bbc91efc22dd1c4818a47814fc72bf74d024510451b119381579bfa39021"
-"checksum gobject-sys 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "61d55bc9202447ca776f6ad0048c36e3312010f66f82ab478e97513e93f3604b"
-"checksum gstreamer 0.14.5 (registry+https://github.com/rust-lang/crates.io-index)" = "fa91e470b0cd4b05611f7d0e89caf76e39752156440877f04c23ad34ffc9761c"
-"checksum gstreamer-app 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a85485c2db4149ccb24d0b3c6598725743dec254bf757ac7a3684e62b9822c27"
-"checksum gstreamer-app-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "41c85ef44d827b9292833203f6623cf6592d5eda06ad1eeefa63bca0cc38ce71"
-"checksum gstreamer-audio 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "3d4f0bddc4c983105f3a0666d6e3abc88a72aad3d3b862816ed7f8c86aa3e833"
-"checksum gstreamer-audio-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "03c8b1cc44e9df434e1817ee00bfa5cb146008cacfcfbd88de4a0dac90b04496"
-"checksum gstreamer-base 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f9e72a0456c51e9cf3a21c96539bed9be3f38c85ea49eee6d87a4d61db0cc2b0"
-"checksum gstreamer-base-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "9ba1955ea091323c17fdf8ff54fd7cf3dfed1a6035193ba08f85eb76bf549056"
-"checksum gstreamer-gl 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "3a7e54a021369cc93be69d2aaaab75e8916517bbc6de9d19f6584135df740580"
-"checksum gstreamer-gl-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "bb42f6fb935126b02e6221d0c3655da0b3817bda9e355cc44467cd54ad8259b5"
-"checksum gstreamer-player 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "78395f87de2b954ca3e33a594a4eb85e68246f5f41a70bf0ab52187aacb4d3a9"
-"checksum gstreamer-player-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c3608d3e96c8977f31b9b8db7da0b8d0e96758b060e3f05fc3ee9626d75ab1c5"
-"checksum gstreamer-sdp 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b2e680156e5a488eda9ebd6081c0141386ef72bb81e3f0e6a2ca0c3129d82ac2"
-"checksum gstreamer-sdp-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e062aa557a851d8aac367df24ca80040ec45340033c0c6675fbdc7f26f71da48"
-"checksum gstreamer-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "bdfc2f6cc9b6a1f5159bfd500310fe431cfb0b74b3af17ce3fdf8353cf586975"
-"checksum gstreamer-video 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7b3f0b864eced7c270c0e083a433128ddf65cda2409a5f400e1c7af3cb59858f"
-"checksum gstreamer-video-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "6b8fcb1e577de93d1ad1e5117234ce64d40f215143d752140719923651608983"
-"checksum gstreamer-webrtc 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e085c2c1ddfbbf91459c950d10b40e7acef1f8661f6e86aa4d40edfef91cd167"
-"checksum gstreamer-webrtc-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "0bf7375d6737037e01c6c2342ab30e6ff77cf5e36fc64c81d8d43054b33f4fa7"
+"checksum gobject-sys 0.9.0 (git+https://github.com/gtk-rs/sys)" = "<none>"
+"checksum gstreamer 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-app 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-app-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-audio 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-audio-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-base 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-base-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-gl 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-gl-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-player 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-player-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-sdp 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-sdp-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-video 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-video-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
+"checksum gstreamer-webrtc 0.15.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs)" = "<none>"
+"checksum gstreamer-webrtc-sys 0.9.0 (git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs-sys)" = "<none>"
 "checksum httparse 1.3.3 (registry+https://github.com/rust-lang/crates.io-index)" = "e8734b0cfd3bc3e101ec59100e101c2eecd19282202e87808b3037b442777a83"
 "checksum hyper 0.10.15 (registry+https://github.com/rust-lang/crates.io-index)" = "df0caae6b71d266b91b4a83111a61d2b94ed2e2bea024c532b933dcff867e58c"
 "checksum idna 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "38f09e0f0b1fb55fdee1f17470ad800da77af5186a1a76c026b679358b7e844e"

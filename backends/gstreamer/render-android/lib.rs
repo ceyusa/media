@@ -125,6 +125,7 @@ impl Render for RenderAndroid {
                         .get_property("context")
                         .or_else(|_| Err(()))?
                         .get::<gst_gl::GLContext>()
+                        .or_else(|_| Err(()))?
                 } else {
                     None
                 };
@@ -136,13 +137,11 @@ impl Render for RenderAndroid {
         let is_external_oes = caps
             .get_structure(0)
             .and_then(|s| {
-                s.get::<&str>("texture-target").and_then(|target| {
-                    if target == "external-oes" {
-                        Some(s)
-                    } else {
-                        None
-                    }
-                })
+                if Ok(Some("external-oes")) == s.get::<&str>("texture-target") {
+                    Some(true)
+                } else {
+                    None
+                }
             })
             .is_some();
 

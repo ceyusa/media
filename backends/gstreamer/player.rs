@@ -636,10 +636,10 @@ impl GStreamerPlayer {
             let is_ready_clone = self.is_ready.clone();
             let observer = self.observer.clone();
             let connect_result = pipeline.connect("source-setup", false, move |args| {
-                let source = match args[1].get::<gst::Element>() {
+                let source = match args[1].get::<gst::Element>().unwrap_or(None) {
                     Some(source) => source,
                     None => {
-                        let _ = notify!(
+                        notify!(
                             sender,
                             Err(PlayerError::Backend("Source setup failed".to_owned()))
                         );
