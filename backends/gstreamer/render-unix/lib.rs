@@ -197,8 +197,21 @@ impl Render for RenderUnix {
             .is_some();
 
         let info = gst_video::VideoInfo::from_caps(caps).ok_or_else(|| ())?;
+
+        if self.gst_context.lock().unwrap().is_some() {
+            if let Some(sync_meta) = buffer.get_meta::<gst_gl::GLSyncMeta>() {
+                sync_meta.set_sync_point(self.gst_context.lock().unwrap().as_ref().unwrap());
+            }
+        }
+
         let frame =
             gst_video::VideoFrame::from_buffer_readable_gl(buffer, &info).or_else(|_| Err(()))?;
+
+        if self.gst_context.lock().unwrap().is_some() {
+            if let Some(sync_meta) = frame.buffer().get_meta::<gst_gl::GLSyncMeta>() {
+                sync_meta.wait(&self.app_context);
+            }
+        }
 
         Frame::new(
             info.width() as i32,
