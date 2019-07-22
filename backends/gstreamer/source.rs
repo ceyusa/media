@@ -36,6 +36,9 @@ mod imp {
     struct Position {
         offset: u64,
         requested_offset: u64,
+        decrease_blocksize_count: i32,
+        increase_blocksize_count: i32,
+        minimum_blocksize: u32,
     }
 
     impl Default for Position {
@@ -43,6 +46,9 @@ mod imp {
             Position {
                 offset: 0,
                 requested_offset: 0,
+                increase_blocksize_count: 0,
+                decrease_blocksize_count: 0,
+                minimum_blocksize: 0,
             }
         }
     }
@@ -123,8 +129,56 @@ mod imp {
 
             let buffer_starting_offset = pos.offset;
 
-            // @TODO: optimization: update the element's blocksize by
-            // X factor given current length
+            // Optimization: update source blocksize by X factor given
+            // the current data length
+            {
+                let mut block_size: u64 = self.appsrc.get_blocksize().into();
+                gst_log!(
+                    self.cat,
+                    obj: parent,
+                    "Checking to update block size. Read:{} blocksize:{}",
+                    length,
+                    block_size
+                );
+
+                if length >= block_size {
+                    pos.decrease_blocksize_count = 0;
+                    pos.increase_blocksize_count += 1;
+
+                    if pos.increase_blocksize_count >= 1 {
+                        block_size *= 2;
+                        gst_debug!(
+                            self.cat,
+                            obj: parent,
+                            "Increased block size to: {}",
+                            block_size
+                        );
+                        self.appsrc
+                            .set_blocksize(u32::try_from(block_size).unwrap());
+                        pos.increase_blocksize_count = 0;
+                    }
+                } else if (length as f64) < (block_size as f64) * 0.2 {
+                    pos.decrease_blocksize_count += 1;
+                    pos.increase_blocksize_count = 0;
+
+                    if pos.decrease_blocksize_count >= 2 {
+                        block_size /= 2;
+                        block_size = u64::max(block_size, pos.minimum_blocksize.into());
+                        gst_debug!(
+                            self.cat,
+                            obj: parent,
+                            "Decreased block size to: {}",
+                            block_size
+                        );
+                        self.appsrc
+                            .set_blocksize(u32::try_from(block_size).unwrap());
+                        pos.decrease_blocksize_count = 0;
+                    }
+                } else {
+                    pos.decrease_blocksize_count = 0;
+                    pos.increase_blocksize_count = 0;
+                }
+            }
 
             pos.offset += length;
 
@@ -347,6 +401,8 @@ mod imp {
             self.appsrc.set_property_format(gst::Format::Bytes);
             self.appsrc
                 .set_stream_type(gst_app::AppStreamType::Seekable);
+
+            self.position.lock().unwrap().minimum_blocksize = self.appsrc.get_blocksize();
 
             ::set_element_flags(element, gst::ElementFlags::SOURCE);
         }

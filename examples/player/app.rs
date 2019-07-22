@@ -254,7 +254,7 @@ pub fn main_loop(mut app: App) -> Result<glutin::WindowedContext<glutin::Possibl
 
     // file reader
     let mut buf_reader = BufReader::new(file);
-    let mut buffer = [0; 16384];
+    let mut buffer = [0; 1024 * 8];
 
     player
         .lock()
