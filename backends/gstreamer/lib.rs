@@ -6,6 +6,7 @@ extern crate byte_slice_cast;
 extern crate mime;
 
 extern crate glib_sys as glib_ffi;
+extern crate gobject_sys;
 extern crate gstreamer_sys as gst_ffi;
 
 #[macro_use]

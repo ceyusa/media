@@ -2,6 +2,7 @@ use glib;
 use glib::subclass;
 use glib::subclass::prelude::*;
 use glib::translate::*;
+use gobject_sys;
 use gst;
 use gst::prelude::*;
 use gst::subclass::prelude::*;
